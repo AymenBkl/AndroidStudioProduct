@@ -21,28 +21,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener {
-
+    MediaPlayer mysound;
     ListView mylist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MediaPlayer mysound = MediaPlayer.create(getApplicationContext(),R.raw.mysong);
-        mysound.start();
-        mylist = (ListView) findViewById(R.id.products);
-        Resources res = getResources();
-        String[] descriptions = res.getStringArray(R.array.Description);
-        String[] livraison = res.getStringArray(R.array.Livraison);
-        String[] links = res.getStringArray(R.array.Links);
-        int[] prixg = res.getIntArray(R.array.PrixG);
-        int[] prixsg = res.getIntArray(R.array.PrixSG);
-        String[] idimage = res.getStringArray(R.array.idimage);
-        int[] garantie = res.getIntArray(R.array.jours);
-        List<Produits> produits = new ArrayList<Produits>();
-        for (int i = 0;i<descriptions.length;i++){
-            int id = getResources().getIdentifier(idimage[i], "drawable", getPackageName());
-            produits.add(new Produits(descriptions[i],prixg[i],prixsg[i],links[i],livraison[i],garantie[i],id));
+        if (mysound ==null) {
+            mysound = MediaPlayer.create(getApplicationContext(), R.raw.mysong);
+            mysound.start();
         }
+        else {
+            mysound.start();
+        }
+        mylist = (ListView) findViewById(R.id.products);
+        List<Produits> produits = lesProduits();
         ProduitsAdapter padapter = new ProduitsAdapter(MainActivity.this,produits);
         mylist.setAdapter(padapter);
         mylist.setOnItemClickListener(this);
@@ -62,8 +55,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = new Intent(MainActivity.this, com.example.tpproduits.Produits.class);
         Produits produit = (Produits) mylist.getItemAtPosition(position);
         intent.putExtra("produit",produit);
+        mysound.pause();
         startActivity(intent);
         return false;
+    }
+    public List<Produits> lesProduits(){
+        Resources res = getResources();
+        String[] descriptions = res.getStringArray(R.array.Description);
+        String[] livraison = res.getStringArray(R.array.Livraison);
+        String[] links = res.getStringArray(R.array.Links);
+        int[] prixg = res.getIntArray(R.array.PrixG);
+        int[] prixsg = res.getIntArray(R.array.PrixSG);
+        String[] idimage = res.getStringArray(R.array.idimage);
+        int[] garantie = res.getIntArray(R.array.jours);
+        List<Produits> produits = new ArrayList<Produits>();
+        for (int i = 0;i<descriptions.length;i++){
+            int id = getResources().getIdentifier(idimage[i], "drawable", getPackageName());
+            produits.add(new Produits(descriptions[i],prixg[i],prixsg[i],links[i],livraison[i],garantie[i],id));
+        }
+        return produits;
     }
 
 }
