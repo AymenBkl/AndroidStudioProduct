@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Produits</string>
+    <string-array name="Description">
+        <item>This item 1</item>
+        <item>This item 2 </item>
+        <item>This item 3</item>
+        <item>This item 4</item>
+        <item>This item 5</item>
+    </string-array>
+    <string-array name="Livraison">
+        <item>Gratuite</item>
+        <item>Payé</item>
+        <item>Gratuite</item>
+        <item>Payé</item>
+        <item>Payé</item>
+    </string-array>
+    <integer-array name="PrixG">
+        <item>1000</item>
+        <item>1500</item>
+        <item>1030</item>
+        <item>1400</item>
+        <item>1010</item>
+    </integer-array>
+    array>
+    <integer-array name="PrixSG">
+        <item>1100</item>
+        <item>1700</item>
+        <item>1230</item>
+        <item>1800</item>
+        <item>1310</item>
+    </integer-array>
+    array>
+    <string-array name="Links">
+        <item>https://item1.com</item>
+        <item>https://item2.com</item>
+        <item>https://item3.com</item>
+        <item>https://item4.com</item>
+        <item>https://item5.com</item>
+    </string-array>
+    <integer-array name="jours">
+        <item>60</item>
+        <item>50</item>
+        <item>30</item>
+        <item>40</item>
+        <item>70</item>
+    </integer-array>
+    <string-array name="idimage">
+        <item>p1</item>
+        <item>p2</item>
+        <item>p3</item>
+        <item>p4</item>
+        <item>p5</item>
+    </string-array>
+</resources>
