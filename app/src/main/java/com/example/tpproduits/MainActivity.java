@@ -29,9 +29,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         if (mysound ==null) {
             mysound = MediaPlayer.create(getApplicationContext(), R.raw.mysong);
+            mysound.prepareAsync();
             mysound.start();
         }
         else {
+            
             mysound.start();
         }
         mylist = (ListView) findViewById(R.id.products);

@@ -107,6 +107,7 @@
     <TextView
         android:id="@+id/link"
         android:clickable="true"
+        android:autoLink="all"
         android:onClick="takeme"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
